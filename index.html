@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiverse Explorer | Rick and Morty API</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">API REST • TEMPO REAL</span>
+            <h1>Multiverse Explorer</h1>
+            <p>Banco de dados interativo dos personagens de Rick and Morty</p>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Painel de Controles e Filtros -->
+        <section class="controls-bar" aria-label="Filtros de pesquisa">
+            <div class="search-box">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Buscar personagem pelo nome (ex: Rick, Morty, Summer)..." autocomplete="off">
+            </div>
+
+            <div class="filters-group">
+                <select id="status-filter" aria-label="Filtrar por status">
+                    <option value="">Status: Todos</option>
+                    <option value="alive">Vivo (Alive)</option>
+                    <option value="dead">Morto (Dead)</option>
+                    <option value="unknown">Desconhecido (Unknown)</option>
+                </select>
+
+                <select id="species-filter" aria-label="Filtrar por espécie">
+                    <option value="">Espécie: Todas</option>
+                    <option value="Human">Humano (Human)</option>
+                    <option value="Alien">Alienígena (Alien)</option>
+                    <option value="Humanoid">Humanoide (Humanoid)</option>
+                    <option value="Robot">Robô (Robot)</option>
+                    <option value="Cronenberg">Cronenberg</option>
+                </select>
+
+                <button id="reset-btn" class="btn-secondary" title="Limpar todos os filtros">Limpar</button>
+            </div>
+        </section>
+
+        <!-- Barra de Status dos Resultados -->
+        <div class="results-meta">
+            <span id="results-count">Carregando personagens...</span>
+            <span id="page-indicator">Página 1</span>
+        </div>
+
+        <!-- Grid onde os Cards serão injetados via JavaScript -->
+        <section id="cards-container" class="cards-grid"></section>
+
+        <!-- Controles de Paginação -->
+        <nav class="pagination" aria-label="Navegação de páginas">
+            <button id="prev-btn" class="btn-page" disabled>Anterior</button>
+            <span id="pagination-info" class="pagination-text">1 de 1</span>
+            <button id="next-btn" class="btn-page" disabled>Próxima</button>
+        </nav>
+    </main>
+
+    <!-- Modal de Detalhes do Personagem -->
+    <div id="character-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <button id="close-modal" class="modal-close" aria-label="Fechar janela">&times;</button>
+            <div id="modal-body" class="modal-content"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desenvolvido com HTML5, CSS3 e JavaScript Vanilla (Fetch API) • Projeto Front-End UniFECAF</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
